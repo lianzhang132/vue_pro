@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="node_modules/vue/dist/vue.js"></script>
+    <style>
+        ul{
+            list-style: none;
+            overflow: hidden;
+            width: 480px;
+        }
+        ul li{
+            float: left;
+            width: 100px;
+            height: 40px;
+            background-color: coral;
+            line-height: 40px;
+            text-align: center;
+            margin-right: 10px;
+            color: #ffffff;
+        }
+        .active{
+            background-color: green;
+        }
+    </style>
+
+</head>
+<body>
+<div id="slider">
+<!--变量名指向date中的数据键值对-->
+    <img :src="currentImgSrc" width="500" height="600">
+    <ul>
+        <li v-for="(v,k) in imgArr" v-on:click="changeImg(k)" v-bind:class="{active:currentIndex==k}">{{k+1}}</li>
+<!--v-bind 绑定类到当前对象且优先级最高-->
+    </ul>
+</div>
+
+</body>
+<script>
+    var imgArr=[
+        {imgSrc:'img2/3-1P614094QH92.jpg'},
+        {imgSrc:'img2/23nytqft2tdtw.jpg'},
+        {imgSrc:'img2/666rxe1znaitwg.jpg'},
+        {imgSrc:'img2/890rsgsgprfqb4.jpg'},
+    ]
+    var app=new Vue({
+        el:'#slider',
+        data:function () {
+            return{
+                currentImgSrc:'img2/890rsgsgprfqb4.jpg',
+                imgArr:imgArr,
+                currentIndex:0,
+            }
+        },
+        methods:{
+            changeImg:function (k) {
+                this.currentImgSrc=this.imgArr[k].imgSrc;
+                this.currentIndex=k;
+            }
+        }
+    })
+</script>
+
+
+</html>

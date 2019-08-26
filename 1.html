@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="node_modules/vue/dist/vue.js"></script>
+
+</head>
+
+<body>
+<div id="adc">
+   <h1>{{ msg }}</h1>
+    <h2>{{ msg }}</h2>
+    <h2>{{ 1<2?'真的':'假的' }}</h2>
+    <h2>{{'msg'}}</h2>
+    <h2>{{'hello'.split('').reverse().join('')}}</h2>
+
+</div>
+
+
+</body>
+<script>
+
+    new Vue({
+        el:'#adc',
+        data:{
+            msg:'hello',
+            menuList:[
+                {id:1,name:'唐海龙',age:18},
+                {id:2,name:'毛智力',age:28},
+                {id:3,name:'杨志远',age:38},
+                {id:4,name:'高帆',age:17},
+            ]
+
+        },
+         template:'<div>' +
+        '<ul>' +
+        '<li v-for="(item,index) in menuList">{{index+1}}----{{item.id}}--{{item.name}}-----{{item.age}}</li>' +
+        '</ul>' +
+        '</div>'
+
+    })
+</script>
+
+</html>
